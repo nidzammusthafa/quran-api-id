@@ -4,7 +4,7 @@ Dokumentasi ini menyediakan panduan lengkap untuk menggunakan endpoint yang ters
 
 ## Base URL
 
-Semua endpoint dalam dokumentasi ini menggunakan base URL dari file `.env` Anda. Secara default, jika tidak ada, akan menggunakan `http://localhost:3005`.
+Semua endpoint dalam dokumentasi ini menggunakan base URL berikut: `https://quran-api-id-kappa.vercel.app`
 
 ---
 
@@ -22,31 +22,31 @@ Menampilkan daftar endpoint yang tersedia beserta informasi proyek.
   {
     "endpoints": [
       {
-        "path": "http://localhost:3005/surahs",
+        "path": "https://quran-api-id-kappa.vercel.app/surahs",
         "description": "get all surah: /surahs"
       },
       {
-        "path": "http://localhost:3005/surahs/112",
+        "path": "https://quran-api-id-kappa.vercel.app/surahs/112",
         "description": "get spesifict surah using number surah in quran (1 - 114): /surahs/{numberSurah}"
       },
       {
-        "path": "http://localhost:3005/surahs/112/ayahs",
+        "path": "https://quran-api-id-kappa.vercel.app/surahs/112/ayahs",
         "description": "get all ayah from spesifict surah: /surahs/{numberSurah}/ayahs"
       },
       {
-        "path": "http://localhost:3005/surahs/112/ayahs/2",
+        "path": "https://quran-api-id-kappa.vercel.app/surahs/112/ayahs/2",
         "description": "get spesifict ayah from spesifict surah: /surahs/{numberSurah}/ayahs/{numberAyah}"
       },
       {
-        "path": "http://localhost:3005/random",
+        "path": "https://quran-api-id-kappa.vercel.app/random",
         "description": "get random ayah: /random"
       },
       {
-        "path": "http://localhost:3005/juz/1",
+        "path": "https://quran-api-id-kappa.vercel.app/juz/1",
         "description": "get all ayahs in a juz: /juz/{juzNumber}"
       },
       {
-        "path": "http://localhost:3005/pages/1",
+        "path": "https://quran-api-id-kappa.vercel.app/pages/1",
         "description": "get all ayahs in a page: /pages/{pageNumber}"
       }
     ],
