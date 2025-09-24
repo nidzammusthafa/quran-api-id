@@ -42,4 +42,50 @@ const getRandomSurah = () => {
   return surah.ayahs[getRandomInt(1, surah.ayahs.length) - 1];
 };
 
-module.exports = { getListSurahs, getSurah, getAyahs, getAyah, getRandomSurah };
+const getJuz = (juzNumber) => {
+  const ayahsInJuz = [];
+  quran.forEach(surah => {
+    const ayahs = surah.ayahs.filter(ayah => ayah.meta.juz === Number(juzNumber));
+    if (ayahs.length > 0) {
+      ayahsInJuz.push({
+        number: surah.number,
+        name: surah.name,
+        translation: surah.translation,
+        revelation: surah.revelation,
+        numberOfAyahs: surah.numberOfAyahs,
+        ayahs: ayahs
+      });
+    }
+  });
+
+  if (ayahsInJuz.length === 0) {
+    throw new ApiError(httpStatus.NOT_FOUND, "not found");
+  }
+
+  return ayahsInJuz;
+};
+
+const getPage = (pageNumber) => {
+  const ayahsInPage = [];
+  quran.forEach(surah => {
+    const ayahs = surah.ayahs.filter(ayah => ayah.meta.page === Number(pageNumber));
+    if (ayahs.length > 0) {
+      ayahsInPage.push({
+        number: surah.number,
+        name: surah.name,
+        translation: surah.translation,
+        revelation: surah.revelation,
+        numberOfAyahs: surah.numberOfAyahs,
+        ayahs: ayahs
+      });
+    }
+  });
+
+  if (ayahsInPage.length === 0) {
+    throw new ApiError(httpStatus.NOT_FOUND, "not found");
+  }
+
+  return ayahsInPage;
+};
+
+module.exports = { getListSurahs, getSurah, getAyahs, getAyah, getRandomSurah, getJuz, getPage };
