@@ -88,4 +88,37 @@ const getPage = (pageNumber) => {
   return ayahsInPage;
 };
 
-module.exports = { getListSurahs, getSurah, getAyahs, getAyah, getRandomSurah, getJuz, getPage };
+const search = (keyword) => {
+  const result = [];
+  const lowerCaseKeyword = keyword.toLowerCase();
+
+  quran.forEach(surah => {
+    const matchingAyahs = surah.ayahs.filter(ayah => 
+      ayah.arab.includes(keyword) || 
+      ayah.translation.toLowerCase().includes(lowerCaseKeyword)
+    );
+
+    if (matchingAyahs.length > 0) {
+      result.push({
+        number: surah.number,
+        name: surah.name,
+        translation: surah.translation,
+        revelation: surah.revelation,
+        numberOfAyahs: surah.numberOfAyahs,
+        matches: matchingAyahs.map(ayah => ({
+          number: ayah.number,
+          arab: ayah.arab,
+          translation: ayah.translation
+        }))
+      });
+    }
+  });
+
+  if (result.length === 0) {
+    throw new ApiError(httpStatus.NOT_FOUND, "not found");
+  }
+
+  return result;
+};
+
+module.exports = { getListSurahs, getSurah, getAyahs, getAyah, getRandomSurah, getJuz, getPage, search };
